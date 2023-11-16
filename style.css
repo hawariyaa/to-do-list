@@ -60,20 +60,71 @@ body{
   margin-top: 5em;
   margin-bottom: -1em;
 }
+ul{
+  display: flex;
+  flex-direction: column;
+}
 ul li{
+  display: inline-block;
   list-style: none;
-  font-size: 17px;
+  font-size: 27px;
+  margin-bottom: 0.3em;
+  margin-left: 0;
+  margin-right: 0;
 }
 ul li::before{
+  display: inline-flex;
+  margin-right: 0.6em;
   content: '';
-  background-image: url(images/checked.png);
-  background-color: red;
+  background-image: url(images/unchecked.png);
   width: 28px;
   height: 28px;
   background-size: cover;
   background-position: center;
   top: 12px;
   left: 18px;
-
 }
-@media
+.checked{
+  text-decoration: line-through;
+}
+ul li.checked::before{
+  background-image: url(images/checked.png);
+}
+span{
+  display: inline;
+  cursor: pointer;
+}
+@media screen and (max-width: 600px){
+  .all{
+   background-color: white;
+   position: absolute;
+   top: 10em;
+   padding: 4em;
+   padding-left: 4em;
+   padding-right: 4em;
+   border-radius: 10px;
+  }
+  .input input {
+    font-size:1em;
+    padding: 10px;
+    font-weight: 14px;
+    border: none;
+    outline: none;
+    background-color: #e8eb34;
+    border-radius: 30px;
+    padding-left: 30px;
+    position: absolute;
+    right: 30px;
+  }
+  .input button{
+    font-size: 0.4em;
+    padding: 16px 50px;
+    border-radius: 40px;
+    border:none;
+    outline: none;
+    background-color: red;
+    cursor: pointer;
+    position: absolute;
+    right: -35px;
+  }
+}

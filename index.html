@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
    <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, intial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="author" content="hawariyaw paulos">
    <meta name="description" content="todo-list app">
    <title>todo list</title>
@@ -18,14 +18,47 @@
        <img src="./images/icon.png">
      </div>
      <div class="input">
-       <input type="text" placeholder="text">
+       <input type="text" placeholder="text" id="input">
        <button>Add</button>
      </div>
      <div class="list">
        <ul>
-         <li>task 1</li>
+         <li class="checked">task 1</li>
+         <li>task 2</li>
        </ul>
      </div>
    </div>
+
+
+   <script>
+const input = document.querySelector('#input');
+const button = document.querySelector('button');
+const list = document.querySelector('ul');
+
+
+function addItem(){
+  if(input.value == ''){
+    alert('write something');
+  }
+  else{
+ const newItem = `<li>${input.value}</li><span>&#215;</span>`;
+ list.innerHTML += newItem;
+}
+input.value = '';
+}
+function change(e){
+  this.target.classList.add('checked');
+}
+
+
+button.addEventListener('click', addItem);
+list.addEventListener('click', change);
+
+
+
+
+
+
+   </script>
  </body>
 </html>
