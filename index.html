@@ -26,8 +26,7 @@
      </div>
      <div class="list">
        <ul>
-         <li class="checked">task 1</li>
-         <li>task 2</li>
+
        </ul>
      </div>
    </div>
@@ -40,7 +39,10 @@ const list = document.querySelector('ul');
 const error = document.querySelector('.error');
 const remove = document.querySelector('.both span');
 
-
+function saveData()
+{
+  localStorage.setItem("data", list.innerHTML);
+}
 
 function addItem(){
   if(input.value == ''){
@@ -48,11 +50,12 @@ function addItem(){
   }
   else{
  error.style.display = "none";
+ saveData();
  const newItem = localStorage.getItem("data");
  list.innerHTML += newItem;
 }
 input.value = '';
-saveData();
+
 console.log(localStorage.getItem("data"));
 }
 function change(e){
@@ -65,10 +68,7 @@ if(e.target.tagName === "SPAN"){
   saveData();
 }
 }
-function saveData()
-{
-  localStorage.setItem("data", list.innerHTML);
-}
+
 
 button.addEventListener('click', addItem);
 list.addEventListener('click', change);
