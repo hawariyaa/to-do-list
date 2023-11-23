@@ -21,9 +21,6 @@
        <input type="text" placeholder="text" id="input">
        <button>Add</button>
      </div>
-     <div class="error">
-       <p>write something</p>
-     </div>
      <div class="list">
        <ul>
 
@@ -36,6 +33,7 @@
 const input = document.querySelector('#input');
 const button = document.querySelector('button');
 const list = document.querySelector('ul');
+<<<<<<< HEAD
 const error = document.querySelector('.error');
 const remove = document.querySelector('.both span');
 
@@ -43,12 +41,16 @@ function saveData()
 {
   localStorage.setItem("data", list.innerHTML);
 }
+=======
+
+>>>>>>> parent of 6cae0b0 (commit before using localStorage)
 
 function addItem(){
   if(input.value == ''){
-    error.style.display = "block";
+    alert('write something');
   }
   else{
+<<<<<<< HEAD
  error.style.display = "none";
  saveData();
  const newItem = localStorage.getItem("data");
@@ -68,6 +70,17 @@ if(e.target.tagName === "SPAN"){
   saveData();
 }
 }
+
+=======
+ const newItem = `<li>${input.value}</li><span>&#215;</span>`;
+ list.innerHTML += newItem;
+}
+input.value = '';
+}
+function change(e){
+  this.target.classList.add('checked');
+}
+>>>>>>> parent of 6cae0b0 (commit before using localStorage)
 
 
 button.addEventListener('click', addItem);
