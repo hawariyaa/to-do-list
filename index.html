@@ -21,6 +21,9 @@
        <input type="text" placeholder="text" id="input">
        <button>Add</button>
      </div>
+     <div class="error">
+       <p>write something!</p>
+     </div>
      <div class="list">
        <ul>
 
@@ -33,23 +36,41 @@
 const input = document.querySelector('#input');
 const button = document.querySelector('button');
 const list = document.querySelector('ul');
-
+const error = document.querySelector('.error');
+const li = document.querySelector('.base');
 
 function addItem(){
   if(input.value == ''){
-    alert('write something');
+    error.style.display = "block";
   }
   else{
- const newItem = `<li>${input.value}</li><span>&#215;</span>`;
+
+ error.style.display = "none";
+ const newItem = `<div class="base"><li>${input.value}</li><span>&#215;</span></div>`;
  list.innerHTML += newItem;
 }
 input.value = '';
+saveList();
+console.log(localStorage.getItem("data"));
+
 }
 function change(e){
-  this.target.classList.add('checked');
+  if(e.target.tagName === "LI"){
+    e.target.classList.toggle("checked");
+    saveList();
+  }
+  if(e.target.tagName === "SPAN"){
+    e.target.parentElement.remove();
+    saveList();
+  }
 }
-
-
+function saveList(){
+  localStorage.setItem("data", list.innerHTML);
+}
+function display(){
+  list.innerHTML = localStorage.getItem("data");
+}
+display();
 button.addEventListener('click', addItem);
 list.addEventListener('click', change);
 

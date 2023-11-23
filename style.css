@@ -83,6 +83,9 @@ ul li::before{
   background-position: center;
   top: 12px;
   left: 18px;
+  margin-left: 0;
+  padding-left: 0;
+  cursor: pointer;
 }
 .checked{
   text-decoration: line-through;
@@ -93,6 +96,21 @@ ul li.checked::before{
 span{
   display: inline;
   cursor: pointer;
+  border-radius: 50%;
+  background-color: #948765;
+  padding: 0.7em;
+}
+
+.base{
+  display: inline-flex;
+  grid-gap: 3em;
+}
+.error{
+  display: none;
+  position: absolute;
+  top: 13em;
+  color: red;
+  font-weight: bold;
 }
 @media screen and (max-width: 600px){
   .all{
